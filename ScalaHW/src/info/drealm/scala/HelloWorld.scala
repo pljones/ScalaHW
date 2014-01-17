@@ -5,9 +5,9 @@ import swing.event._
 
 object helloWorld extends SimpleSwingApplication {
 
-    private[this] val integerListView = new SortedListView(List(17, 32, 17, 3, 12, 15, 3)) { name = "Integers" }
+    private[this] val integerListView = new SortedListView(Seq(17, 32, 17, 3, 12, 15, 3)) { name = "Integers" }
 
-    private[this] val wordListView = new SortedListView(List("Borrower", "Woodshed", "Horse", "Soldier", "Bookend", "Woodshed", "Tomato")) {
+    private[this] val wordListView = new SortedListView(Seq("Borrower", "Woodshed", "Horse", "Soldier", "Bookend", "Woodshed", "Tomato")) {
         name = "Words"
     }
 
