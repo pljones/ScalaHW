@@ -1,10 +1,11 @@
 package scala.swing
 
 import info.drealm.scala.SeqSort
+import operator.Functional._
 
 class SortedListView[T <% Ordered[T]] extends ListView[T] with SeqSort[T] {
     def this(items: Traversable[T]) = {
         this()
-        listData = doSort(items)
+        listData = items |> doSort()
     }
 }
