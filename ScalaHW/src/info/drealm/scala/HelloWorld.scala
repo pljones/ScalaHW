@@ -44,7 +44,6 @@ object helloWorld extends SimpleSwingApplication {
 
     private[this] def sortedListViewSelectionChanged[T](sortedListView: SortedListView[T]) = {
         // Fires on mouseDown and mouseUp..!
-        println("---" + sortedListView.name)
         for (x <- sortedListView.selection.items)
             println(x)
     }
