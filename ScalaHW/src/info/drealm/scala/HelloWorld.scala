@@ -7,7 +7,7 @@ object helloWorld extends SimpleSwingApplication {
 
     def top(): Frame = new MainFrame {
 
-        case class GoodbyeButtonClicked extends Event;
+        case class GoodbyeButtonClicked(override val source: Button) extends ActionEvent(source)
         case class DefaultButtonChanged(override val source: Button) extends ComponentEvent()
 
         private[this] val migPanel = new MigPanel("", "[grow]", "[grow]") {
@@ -59,7 +59,7 @@ object helloWorld extends SimpleSwingApplication {
                     contents += goodbyeButton
                     publish(new DefaultButtonChanged(defaultButton))
                 }
-                case ButtonClicked(`goodbyeButton`) => publish(new GoodbyeButtonClicked)
+                case ButtonClicked(`goodbyeButton`) => publish(new GoodbyeButtonClicked(goodbyeButton))
             }
         }
 
@@ -72,7 +72,7 @@ object helloWorld extends SimpleSwingApplication {
         listenTo(migPanel)
         reactions += {
             case DefaultButtonChanged(x) => defaultButton = x
-            case GoodbyeButtonClicked() => quit()
+            case GoodbyeButtonClicked(_) => quit()
         }
     }
 }
