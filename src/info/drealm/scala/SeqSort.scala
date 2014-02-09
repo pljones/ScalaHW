@@ -10,7 +10,7 @@ trait AnySort[+T] {
         xs match {
             case Nil => Nil
             case _ :: Nil => xs.toSeq
-            case _ => xs |> handleTwoOrMore(comparator)
+            case _ => handleTwoOrMore(comparator)(xs)
         }
     }
 
@@ -20,7 +20,7 @@ trait AnySort[+T] {
 trait ComparableSort[+T] extends AnySort[T] {
     // The method has a constraint that items can be ordered and 
     // therefore have a compare function.
-    def sort[T <% Ordered[T]]()(xs: Traversable[T]): Seq[T] = xs |> sortBy(_.compare(_))
+    def sort[T <% Ordered[T]](xs: Traversable[T]): Seq[T] = xs |> sortBy(_.compare(_))
 }
 
 trait SeqSort[+T] extends ComparableSort[T] {
@@ -48,6 +48,6 @@ trait MergeSort[+T] extends ComparableSort[T] {
             }
 
         val (left, right) = xs splitAt xs.toSeq.length / 2
-        merge(sortBy(comparator)(left), sortBy(comparator)(right))
+        merge(left |> sortBy(comparator), right |> sortBy(comparator))
     }
 }

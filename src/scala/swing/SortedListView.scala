@@ -3,14 +3,14 @@ package scala.swing
 import info.drealm.scala.{SeqSort,MergeSort}
 import operator.Functional._
 
-class SortedListView[T <% Ordered[T]] extends ListView[T] with SeqSort[T] {
+class SortedListView[T <% Ordered[T]] extends ListView[T] with MergeSort[T] {
     def this(items: Traversable[T]) = {
         this()
-        listData = items |> sort()
+        listData = sort(items)
     }
     
-    def this(orderBy: (T, T) => Int, items: Traversable[T]) {
+    def this(comparator: (T, T) => Int)(items: Traversable[T]) {
         this()
-        listData = items |> sortBy(orderBy)
+        listData = items |> sortBy(comparator)
     }
 }
