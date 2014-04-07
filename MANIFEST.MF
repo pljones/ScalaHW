@@ -1,0 +1,2 @@
+Main-Class: info.drealm.scala.helloWorld
+Class-Path: scala-library.jar scala-swing.jar miglayout15-swing.jar

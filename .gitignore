@@ -1,3 +1,6 @@
 /bin
 .cache
 .settings/
+scala-library.jar
+scala-swing.jar
+helloWorld.jar
