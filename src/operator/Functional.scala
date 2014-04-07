@@ -4,6 +4,8 @@
  */
 package operator
 
+import scala.language.implicitConversions
+
 object Functional {
     class PipedObject[+T] private[Functional] (value:T)
     {
