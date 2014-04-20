@@ -37,7 +37,7 @@ object helloWorld extends SimpleSwingApplication {
                 mnemonic = Key.E
                 preferredSize = new Dimension(goodbyeButton.preferredSize.width, preferredSize.height)
             }
-            
+
             def defaultButton: Button = {
                 if (contents.contains(helloButton)) helloButton else goodbyeButton
             }
@@ -52,7 +52,7 @@ object helloWorld extends SimpleSwingApplication {
             listenTo(goodbyeButton)
             reactions += {
                 case SelectionChanged(`integerListView`) => sortedListViewSelectionChanged(integerListView)
-                case SelectionChanged(`wordListView`) => sortedListViewSelectionChanged(wordListView)
+                case SelectionChanged(`wordListView`)    => sortedListViewSelectionChanged(wordListView)
                 case ButtonClicked(`helloButton`) => {
                     helloButton.visible = false
                     contents -= helloButton
